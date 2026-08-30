@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FamilyTimeParent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#6C63FF</item>
+        <item name="colorPrimaryDark">#5046CC</item>
+        <item name="colorAccent">#FF6B6B</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+    </style>
+</resources>

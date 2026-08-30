@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FamilyTime" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#6C63FF</item>
+        <item name="colorPrimaryDark">#5046CC</item>
+        <item name="colorAccent">#FF6B6B</item>
+    </style>
+    <style name="Theme.FamilyTime.Lock" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">#1a1a2e</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowShowWhenLocked">true</item>
+    </style>
+</resources>

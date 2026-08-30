@@ -1,0 +1,17 @@
+{
+  "name": "FamilyTime",
+  "short_name": "FamilyTime",
+  "description": "Screen time and chore manager for kids",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#6C63FF",
+  "background_color": "#F0F2FF",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
