@@ -34,24 +34,14 @@ jobs:
 
       - name: Publish build log on failure
         if: failure()
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          CONTENT=$(tail -300 /tmp/build.log | base64 -w 0)
-          SHA=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/contents/build-debug.txt" \
-            | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('sha',''))" 2>/dev/null || echo "")
-          if [ -z "$SHA" ]; then
-            curl -s -X PUT -H "Authorization: token $GITHUB_TOKEN" \
-              -H "Content-Type: application/json" \
-              "https://api.github.com/repos/${{ github.repository }}/contents/build-debug.txt" \
-              -d "{\"message\":\"ci: build log [skip ci]\",\"content\":\"$CONTENT\"}"
-          else
-            curl -s -X PUT -H "Authorization: token $GITHUB_TOKEN" \
-              -H "Content-Type: application/json" \
-              "https://api.github.com/repos/${{ github.repository }}/contents/build-debug.txt" \
-              -d "{\"message\":\"ci: build log [skip ci]\",\"content\":\"$CONTENT\",\"sha\":\"$SHA\"}"
-          fi
+          tail -300 /tmp/build.log > "${{ github.workspace }}/build-debug.txt"
+          cd "${{ github.workspace }}"
+          git config user.email "ci@github.com"
+          git config user.name "CI"
+          git add build-debug.txt
+          git commit -m "ci: build log [skip ci]"
+          git push
 
       - name: Upload kid blocker APK
         uses: actions/upload-artifact@v4
