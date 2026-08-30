@@ -13,7 +13,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.FamilyTime">
+        android:theme="@style/Theme.FamilyTime"
+        android:usesCleartextTraffic="true">
 
         <!-- Setup: kid enters PIN and server IP once -->
         <activity

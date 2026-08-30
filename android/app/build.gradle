@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'com.familytime.blocker'
-    compileSdk 34
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.familytime.blocker"
@@ -31,5 +31,4 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
 }

@@ -8,6 +8,5 @@
     <style name="Theme.FamilyTime.Lock" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">#1a1a2e</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="android:windowShowWhenLocked">true</item>
     </style>
 </resources>
