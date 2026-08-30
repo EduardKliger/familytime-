@@ -28,13 +28,28 @@ jobs:
           set +e
           gradle :app:assembleDebug :parent-app:assembleDebug --no-daemon 2>&1 | tee /tmp/build.log
           BUILD_EXIT=${PIPESTATUS[0]}
-          if [ $BUILD_EXIT -ne 0 ]; then
-            echo "## :x: Build Errors" >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            grep -E "error:|Error|FAILURE|Exception|Could not" /tmp/build.log | head -80 >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-          fi
           exit $BUILD_EXIT
+
+      - name: Publish build log on failure
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CONTENT=$(tail -300 /tmp/build.log | base64 -w 0)
+          SHA=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/contents/build-debug.txt" \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('sha',''))" 2>/dev/null || echo "")
+          if [ -z "$SHA" ]; then
+            curl -s -X PUT -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Content-Type: application/json" \
+              "https://api.github.com/repos/${{ github.repository }}/contents/build-debug.txt" \
+              -d "{\"message\":\"ci: build log [skip ci]\",\"content\":\"$CONTENT\"}"
+          else
+            curl -s -X PUT -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Content-Type: application/json" \
+              "https://api.github.com/repos/${{ github.repository }}/contents/build-debug.txt" \
+              -d "{\"message\":\"ci: build log [skip ci]\",\"content\":\"$CONTENT\",\"sha\":\"$SHA\"}"
+          fi
 
       - name: Upload kid blocker APK
         uses: actions/upload-artifact@v4
