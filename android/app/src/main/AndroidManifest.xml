@@ -40,8 +40,7 @@
         <!-- Background service that polls the server and enforces blocking -->
         <service
             android:name=".BlockerService"
-            android:exported="false"
-            android:foregroundServiceType="dataSync" />
+            android:exported="false" />
 
         <!-- Auto-start on boot -->
         <receiver
