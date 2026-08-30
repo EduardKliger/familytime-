@@ -24,9 +24,17 @@ jobs:
 
       - name: Build both APKs
         working-directory: android
-        env:
-          ANDROID_HOME: ${{ env.ANDROID_HOME }}
-        run: gradle :app:assembleDebug :parent-app:assembleDebug --no-daemon --stacktrace
+        run: |
+          set +e
+          gradle :app:assembleDebug :parent-app:assembleDebug --no-daemon 2>&1 | tee /tmp/build.log
+          BUILD_EXIT=${PIPESTATUS[0]}
+          if [ $BUILD_EXIT -ne 0 ]; then
+            echo "## :x: Build Errors" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            grep -E "error:|Error|FAILURE|Exception|Could not" /tmp/build.log | head -80 >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi
+          exit $BUILD_EXIT
 
       - name: Upload kid blocker APK
         uses: actions/upload-artifact@v4
