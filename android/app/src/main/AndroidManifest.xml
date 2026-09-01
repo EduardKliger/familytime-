@@ -40,6 +40,8 @@
             android:excludeFromRecents="true"
             android:theme="@style/Theme.FamilyTime.Lock" />
 
+        <activity android:name=".HomeActivity" android:exported="false" />
+
         <!-- Background service that polls the server and enforces blocking -->
         <service
             android:name=".BlockerService"

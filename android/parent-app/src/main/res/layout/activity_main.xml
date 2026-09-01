@@ -9,51 +9,70 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="👨‍👩‍👧 FamilyTime"
+        android:text="FamilyTime"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="#6C63FF"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="12dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btn_add_chore"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Toggle ON to block screen time"
-        android:textSize="14sp"
-        android:textColor="#888888"
-        android:layout_marginBottom="32dp" />
+        android:text="+ Add Chore"
+        android:backgroundTint="#6C63FF"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp" />
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="horizontal" android:gravity="center_vertical"
-        android:background="#FFFFFF" android:padding="20dp" android:layout_marginBottom="12dp">
-        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_weight="1" android:text="👧 Amy" android:textSize="22sp" />
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/sw_amy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    <LinearLayout android:id="@+id/card_amy"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:background="#FFFFFF"
+        android:padding="20dp" android:layout_marginBottom="12dp"
+        android:clickable="true" android:focusable="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Amy" android:textSize="20sp" android:textStyle="bold" />
+            <TextView android:id="@+id/time_amy" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="16sp" android:textColor="#6C63FF" />
+        </LinearLayout>
+        <TextView android:id="@+id/badge_amy" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:textSize="13sp"
+            android:textColor="#FF5722" android:layout_marginTop="4dp" android:visibility="gone" />
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="horizontal" android:gravity="center_vertical"
-        android:background="#FFFFFF" android:padding="20dp" android:layout_marginBottom="12dp">
-        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_weight="1" android:text="👦 Guy" android:textSize="22sp" />
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/sw_guy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    <LinearLayout android:id="@+id/card_guy"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:background="#FFFFFF"
+        android:padding="20dp" android:layout_marginBottom="12dp"
+        android:clickable="true" android:focusable="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Guy" android:textSize="20sp" android:textStyle="bold" />
+            <TextView android:id="@+id/time_guy" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="16sp" android:textColor="#6C63FF" />
+        </LinearLayout>
+        <TextView android:id="@+id/badge_guy" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:textSize="13sp"
+            android:textColor="#FF5722" android:layout_marginTop="4dp" android:visibility="gone" />
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="horizontal" android:gravity="center_vertical"
-        android:background="#FFFFFF" android:padding="20dp" android:layout_marginBottom="12dp">
-        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_weight="1" android:text="👧 Mia" android:textSize="22sp" />
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/sw_mia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    <LinearLayout android:id="@+id/card_mia"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:background="#FFFFFF"
+        android:padding="20dp" android:layout_marginBottom="12dp"
+        android:clickable="true" android:focusable="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Mia" android:textSize="20sp" android:textStyle="bold" />
+            <TextView android:id="@+id/time_mia" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="16sp" android:textColor="#6C63FF" />
+        </LinearLayout>
+        <TextView android:id="@+id/badge_mia" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:textSize="13sp"
+            android:textColor="#FF5722" android:layout_marginTop="4dp" android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

@@ -29,6 +29,9 @@
             android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
+        <activity android:name=".KidDetailActivity" android:exported="false" />
+        <activity android:name=".AddChoreActivity" android:exported="false" />
+
         <service
             android:name=".ServerService"
             android:exported="false" />

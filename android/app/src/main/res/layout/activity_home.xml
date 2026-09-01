@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#6C63FF"
+        android:padding="28dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_greeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello!"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--:--"
+            android:textSize="52sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="13sp"
+            android:textColor="#D0C8FF"
+            android:layout_marginTop="4dp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="&#x25B6; Start Screen Time"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:layout_margin="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Today&#39;s Chores"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/chore_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
+
+    </ScrollView>
+
+</LinearLayout>

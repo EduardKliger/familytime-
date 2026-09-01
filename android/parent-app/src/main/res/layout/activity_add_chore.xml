@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chore Name"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. Wash Dishes"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Icon (paste any emoji)"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/et_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="&#x2705;"
+            android:inputType="text"
+            android:textSize="24sp"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Assign To"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="4dp" />
+
+        <Spinner
+            android:id="@+id/sp_kid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Screen Time Reward (minutes)"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/et_minutes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="15"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Chore"
+            android:backgroundTint="#6C63FF"
+            android:textColor="#FFFFFF"
+            android:padding="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>

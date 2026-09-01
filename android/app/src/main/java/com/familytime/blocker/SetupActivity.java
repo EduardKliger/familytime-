@@ -25,6 +25,7 @@ public class SetupActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
         if (prefs.getBoolean(KEY_SETUP, false)) {
             startBlockerService();
+            startActivity(new Intent(this, HomeActivity.class));
             finish();
             return;
         }
@@ -54,8 +55,7 @@ public class SetupActivity extends AppCompatActivity {
             return;
         }
         startBlockerService();
-        Toast.makeText(this, "FamilyTime is active ✓", Toast.LENGTH_LONG).show();
-        finish();
+        Toast.makeText(this, "FamilyTime is active ✓", Toast.LENGTH_LONG).show();        startActivity(new Intent(this, HomeActivity.class));        finish();
     }
 
     @Override
