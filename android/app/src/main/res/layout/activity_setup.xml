@@ -13,30 +13,21 @@
         android:text="🏠 FamilyTime Setup"
         android:textSize="28sp"
         android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connects to parent’s phone on your WiFi automatically."
+        android:textSize="15sp"
+        android:textColor="#888888"
+        android:textAlignment="center"
         android:layout_marginBottom="32dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Server IP (e.g. 192.168.1.100)"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
-
-    <EditText
-        android:id="@+id/et_server_ip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="192.168.1.x"
-        android:inputType="textUri"
-        android:textSize="18sp"
-        android:padding="14dp"
-        android:background="@drawable/input_bg"
-        android:layout_marginBottom="24dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kid profile ID (e.g. profile_kid_amy)"
+        android:text="Your name"
         android:textSize="16sp"
         android:layout_marginBottom="8dp" />
 

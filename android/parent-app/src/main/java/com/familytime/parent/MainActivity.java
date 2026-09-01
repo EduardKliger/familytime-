@@ -1,60 +1,41 @@
 package com.familytime.parent;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
-/** Full-screen WebView — loads the FamilyTime parent PWA from the home server. */
+/** Native toggle dashboard — parent blocks/unblocks each kid. No PC needed. */
 public class MainActivity extends AppCompatActivity {
+    private SharedPreferences prefs;
 
-    private WebView webView;
+    private static final String[] KIDS = {
+        "profile_kid_amy", "profile_kid_guy", "profile_kid_mia"
+    };
 
-    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        prefs = getSharedPreferences(FamilyServer.PREFS, MODE_PRIVATE);
 
-        String serverUrl = getIntent().getStringExtra("server_url");
-        if (serverUrl == null) {
-            SharedPreferences prefs = getSharedPreferences(SetupActivity.PREFS, MODE_PRIVATE);
-            serverUrl = prefs.getString(SetupActivity.KEY_SERVER, "http://localhost:3000");
+        Intent svc = new Intent(this, ServerService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) startForegroundService(svc);
+        else startService(svc);
+
+        int[] switchIds = {R.id.sw_amy, R.id.sw_guy, R.id.sw_mia};
+        for (int i = 0; i < KIDS.length; i++) {
+            final String kid = KIDS[i];
+            SwitchCompat sw = findViewById(switchIds[i]);
+            sw.setChecked(prefs.getBoolean(kid + "_blocked", false));
+            sw.setOnCheckedChangeListener((btn, checked) ->
+                prefs.edit()
+                    .putBoolean(kid + "_blocked", checked)
+                    .putString(kid + "_reason",  checked ? "chores" : "")
+                    .apply()
+            );
         }
-
-        webView = findViewById(R.id.webview);
-        WebSettings s = webView.getSettings();
-        s.setJavaScriptEnabled(true);
-        s.setDomStorageEnabled(true);        // localStorage
-        s.setDatabaseEnabled(true);          // IndexedDB (PouchDB)
-        s.setCacheMode(WebSettings.LOAD_DEFAULT);
-        s.setAllowFileAccess(false);         // no filesystem access needed
-
-        webView.setWebChromeClient(new WebChromeClient());
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest req) {
-                // keep all navigation inside the WebView
-                return false;
-            }
-        });
-
-        webView.loadUrl(serverUrl);
-    }
-
-    /** Back button navigates within the WebView instead of exiting the app. */
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
-            webView.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
     }
 }
